@@ -17,18 +17,18 @@ class AuthController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
-        ]);
+        ]); //validate the request
 
         if($validator ->fails()){
             return response()->json([
                 'validation_errors'=>$validator->messages()
-            ],401);
+            ],401); //return the errors
         }else{
             $user = User::create([
                 'name'=>$request->name,
                 'email'=>$request->email,
                 'password'=>Hash::make($request->password),
-            ],401);
+            ],401); //create the user
 
             $token = $user->createToken($user->email.'_token')->plainTextToken;
 
@@ -37,7 +37,7 @@ class AuthController extends Controller
                 'username'=>$user->name,
                 'token'=>$token,
                 'message'=>'registered success'
-            ],200);
+            ],200); //return the user
 
         }
     }
@@ -47,12 +47,12 @@ class AuthController extends Controller
         $validator = Validator::make($request ->all(), [
             'email' => 'required|email',
             'password' => 'required|min:8',
-        ]);
+        ]); //validate the request
 
         if($validator ->fails()){
             return response()->json([
                 'validation_errors'=>$validator->messages()
-            ],401);
+            ],401); //return the errors
         }else{
             $user = User::where('email', $request->email)->first();
             if(! $user || ! Hash::check($request->password, $user->password)){
@@ -60,7 +60,7 @@ class AuthController extends Controller
                     'status'=>401,
                     'message'=>'invalid credentials'
 
-                ],401);
+                ],401); //return the errors
             }else{
                 $token = $user->createToken($user->email.'_token')->plainTextToken;
 
@@ -69,7 +69,7 @@ class AuthController extends Controller
                     'name'=>$user->name,
                     'token'=>$token,
                     'message'=>'login success'
-                ],200);
+                ],200); //return the user
     
             }
                 
