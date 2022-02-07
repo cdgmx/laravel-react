@@ -15,8 +15,8 @@
                                            
 The api endpoints are
 [1] localhost:1880/api/login
-[1] localhost:1880/api/register
-[1] localhost:1880/api/users                                                                                
+[2] localhost:1880/api/register
+[3] localhost:1880/api/users                                                                                
                                            
 ## react-frontend
 [1] Run `npm run i` install dependencies <br/>
