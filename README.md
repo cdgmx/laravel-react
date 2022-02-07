@@ -13,7 +13,7 @@
 [6] Run `php artisan key:generate` <br/>
 [7] Run `php artisan serve` <br/>
                                            
-The api endpoints are
+The api endpoints are  <br/>
 [1] `localhost:1880/api/login` <br/>
 [2] `localhost:1880/api/register` <br/>
 [3] `localhost:1880/api/users`       <br/>                                                                          
