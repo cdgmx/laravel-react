@@ -7,11 +7,11 @@ import Swal from "sweetalert2";
 const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { userInfo, error } = useSelector((state) => state.userLogin);
+  const { userInfo, error } = useSelector((state) => state.userLogin); //get userInfo from redux store
   
   useEffect(() => {
+    //called when userInfo changes
     if (userInfo) {
-
       Swal.fire({
         icon: "success",
         title: "Success",
@@ -22,6 +22,7 @@ const LoginPage = () => {
   }, [userInfo, navigate]);
 
   useEffect(() => {
+    //called when there is an error
     if (error) {
       Swal.fire({
         icon: "error",
@@ -33,6 +34,7 @@ const LoginPage = () => {
 
 
   const handleSubmit = (e) => {
+    //called when user clicks login button
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;

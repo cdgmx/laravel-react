@@ -14,6 +14,11 @@ import {
   USER_LIST_FAIL,
 } from "../constants/userConstants";
 
+/**
+ * @desc Comment action creator
+ * @param {String} email email used when registering
+ * @param {String} password password used when registering
+ */
 export const userLogin = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: USER_LOGIN_REQUEST });
@@ -21,18 +26,21 @@ export const userLogin = (email, password) => async (dispatch) => {
     const { data } = await axios.post(`/api/login`, { email, password });
 
     dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    localStorage.setItem("userInfo", JSON.stringify(data)); //set userInfo to localStorage
   } catch (error) {
     dispatch({ type: USER_LOGIN_FAIL, payload: error.message });
   }
 };
 
-export const userLogout = () => async (dispatch,getState) => {
+/**
+ *  @desc Logout action creator
+ */
+export const userLogout = () => async (dispatch, getState) => {
   try {
     dispatch({ type: USER_LOGOUT_REQUEST });
 
     const {
-        userLogin: {userInfo},
+      userLogin: { userInfo },
     } = getState();
 
     const config = {
@@ -40,51 +48,57 @@ export const userLogout = () => async (dispatch,getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const {data} = await axios.post("/api/logout", {}, config);
-    localStorage.removeItem("userInfo");
+    const { data } = await axios.post("/api/logout", {}, config);
+    localStorage.removeItem("userInfo"); //remove userInfo from localStorage
     dispatch({ type: USER_LOGOUT_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: USER_LOGOUT_FAIL, payload: error.message });
   }
 };
 
+/**
+ * @desc register action creator
+ * @param {String} name name of the account
+ * @param {String} email email of the account
+ * @param {String} password password of the account
+ */
 export const userRegister = (name, email, password) => async (dispatch) => {
   try {
     dispatch({ type: USER_REGISTER_REQUEST });
-   
-    const { data } = await axios.post(
-      `/api/register`,
-      { name, email, password },
-    )
 
-
+    const { data } = await axios.post(`/api/register`, {
+      name,
+      email,
+      password,
+    });
     dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
   } catch (error) {
-    dispatch({ type: USER_REGISTER_FAIL, payload: error.response.data.validation_errors });
+    dispatch({
+      type: USER_REGISTER_FAIL,
+      payload: error.response.data.validation_errors,
+    });
   }
 };
 
-export const listUsers = () => async (dispatch,getState) => {
-    try {
-        dispatch({ type: USER_LIST_REQUEST });
+/**
+ * @desc user list action creator
+ */
+export const listUsers = () => async (dispatch, getState) => {
+  try {
+    dispatch({ type: USER_LIST_REQUEST });
 
+    const {
+      userLogin: { userInfo },
+    } = getState();
 
-        const {
-            userLogin: {userInfo},
-        } = getState();
-
-        const config = {
-            headers: {
-            Authorization: `Bearer ${userInfo.token}`,
-            },
-        };
-
-        const { data } = await axios.get(`/api/users`,config);
-
-        dispatch({ type: USER_LIST_SUCCESS, payload: data });
-    } catch (error) {
-        dispatch({ type: USER_LIST_FAIL, payload: error.message });
-    }
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    const { data } = await axios.get(`/api/users`, config);
+    dispatch({ type: USER_LIST_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: USER_LIST_FAIL, payload: error.message });
+  }
 };
-
-

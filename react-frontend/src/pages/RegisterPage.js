@@ -7,16 +7,18 @@ import Swal from "sweetalert2";
 const RegisterPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { data, error } = useSelector((state) => state.userRegister);
-  const {userInfo } = useSelector((state) => state.userLogin);
+  const { data, error } = useSelector((state) => state.userRegister); //get userInfo from redux store
+  const {userInfo } = useSelector((state) => state.userLogin); //get userInfo from redux store
  
   useEffect(() => {
+    //called when userInfo changes
     if (userInfo) {
       navigate("../", { replace: true });
     }
   }, [userInfo]);
 
   useEffect(() => {
+    //called when there is an error
     if (error) {
       Swal.fire({
         icon: "error",
@@ -27,6 +29,7 @@ const RegisterPage = () => {
   }, [error]);
 
   useEffect(() => {
+    //called when data changes
     if (data) {
         Swal.fire({
             icon: "success",

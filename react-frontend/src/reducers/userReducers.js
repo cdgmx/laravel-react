@@ -13,6 +13,8 @@ import {
   USER_LIST_FAIL,
 } from "../constants/userConstants";
 
+//reducers for user actions
+
 export const userLoginReducer = (state = {}, action) => {
   switch (action.type) {
     case USER_LOGIN_REQUEST:
@@ -21,8 +23,6 @@ export const userLoginReducer = (state = {}, action) => {
       return { loading: false, userInfo: action.payload };
     case USER_LOGIN_FAIL:
       return { loading: false, error: action.payload };
-    // case USER_LOGOUT_SUCCESS:
-    //   return { loading: false , userInfo: null};
     default:
       return state;
   }

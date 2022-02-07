@@ -12,12 +12,12 @@ const reducer = combineReducers({
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
     ?JSON.parse(localStorage.getItem('userInfo'))
-    : null;
+    : null; //rehydrate the userInfo from localStorage
 
 const initialState = {
-    userLogin: {userInfo: userInfoFromStorage},
+    userLogin: {userInfo: userInfoFromStorage}, //set initial state for userLogin
 };
 
-const middleware = [thunk];
-const store = createStore(reducer, initialState, applyMiddleware(...middleware));
+const middleware = [thunk]; // add the thunk middleware
+const store = createStore(reducer, initialState, applyMiddleware(...middleware)); //create the store
 export default store;

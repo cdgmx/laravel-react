@@ -6,22 +6,25 @@ import { useNavigate } from "react-router-dom";
 const UsersPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { data, loading } = useSelector((state) => state.userList);
-  const { userInfo } = useSelector((state) => state.userLogin);
+  const { data, loading } = useSelector((state) => state.userList); //get userInfo from redux store
+  const { userInfo } = useSelector((state) => state.userLogin); //get userInfo from redux store
 
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]); //set users to empty array
 
   useEffect(() => {
+    //called when userInfo changes
     if (!userInfo) {
       navigate("../", { replace: true });
     }
   }, [userInfo]);
 
   useEffect(() => {
+    //List user when loaded
     dispatch(listUsers());
   }, []);
 
   useEffect(() => {
+    //called when data changes
     if (data) {
       setUsers(data.users);
     }

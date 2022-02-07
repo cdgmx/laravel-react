@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { userLogin, userLogout } from "../actions/userActions";
+import { userLogout } from "../actions/userActions";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
-  const { userInfo } = useSelector((state) => state.userLogin);
+  const { userInfo } = useSelector((state) => state.userLogin); //get userInfo from redux store
   const { data: logoutData, loading: logoutLoading } = useSelector(
     (state) => state.userLogout
   );
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false); //set loggedIn to false
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+
   const handleLogout = () => {
+    //called when user clicks logout button
     Swal.fire({
       icon: "error",
       title: "Are you sure you want to logout?",
@@ -27,6 +29,7 @@ const Navbar = () => {
   };
 
   useEffect(() => {
+    //called when userInfo changes
     if (userInfo) {
       setLoggedIn(true);
     } else {
@@ -93,7 +96,6 @@ const Navbar = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                {userInfo.name}
                 Welcome {userInfo.name}
               </a>
               <ul
