@@ -1,11 +1,8 @@
 <h1 align="center">
- Ummatter</h1>
+ Laravel React</h1>
 
 <div align="center"> <img height="55" src="https://miro.medium.com/max/1400/1*m0s2io11J82PR7miqan92w.png"/> <img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/bootstrap.svg"/> <img width="55" src="https://seeklogo.com/images/N/nodejs-logo-FBE122E377-seeklogo.com.png"/> <img width="55" src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png"/><img height="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/javascript.svg"/> <img height="55" src="https://redux.js.org/img/redux-logo-landscape.png"/> <img width="55" src="https://1000logos.net/wp-content/uploads/2020/08/MySQL-Logo.png"/> </div>
 
-<h2 align="center">
-  <a href=https://umatterph.herokuapp.com/">[LIVE APP]</a>
-</h2>
 
 ## laravel-backend
 [1] Run `composer install` install dependencies <br/>
