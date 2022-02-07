@@ -8,15 +8,15 @@
 [1] Run `composer install` install dependencies <br/>
 [2] Run `composer update` <br/>
 [3] Run `cp .env.example .env` install dependencies<br/>
-[4] Create Mysql database and name it 'laravel-backend' or change the config on .env file<br/>                                           
+[4] Create Mysql database and name it 'laravel-backend' or change the config on .env file                                         
 [5] Run `php artisan submit` <br/>
 [6] Run `php artisan key:generate` <br/>
-[4] Run `php artisan serve` <br/>
+[7] Run `php artisan serve` <br/>
                                            
 The api endpoints are
-[1] localhost:1880/api/login
-[2] localhost:1880/api/register
-[3] localhost:1880/api/users                                                                                
+[1] `localhost:1880/api/login` <br/>
+[2] `localhost:1880/api/register` <br/>
+[3] `localhost:1880/api/users`       <br/>                                                                          
                                            
 ## react-frontend
 [1] Run `npm run i` install dependencies <br/>
