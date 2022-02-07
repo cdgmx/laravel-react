@@ -7,7 +7,7 @@
 ## laravel-backend
 [1] Run `composer install` install dependencies <br/>
 [2] Run `composer update` <br/>
-[3] Run `cp .env.example .env` install dependencies<br/>
+[3] Run `cp .env.example .env` <br/>
 [4] Create Mysql database and name it 'laravel-backend' or change the config on .env file                                         
 [5] Run `php artisan submit` <br/>
 [6] Run `php artisan key:generate` <br/>
@@ -20,5 +20,5 @@ The api endpoints are  <br/>
                                            
 ## react-frontend
 [1] Run `npm run i` install dependencies <br/>
-[2] Run `npm run start` install dependencies<br/>
+[2] Run `npm run start` <br/>
 [3] Navigate to `http://localhost:3000/`. The app will automatically reload if you change any of the source files.                                           
